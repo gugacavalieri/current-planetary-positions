@@ -3,7 +3,7 @@ Contributors: isabel104
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=me%40isabelcastillo%2ecom
 Tags: current planets, planetary, positions, astrology, zodiac, planets positions, ephemeris
 Requires at least: 3.7
-Tested up to: 4.5
+Tested up to: 4.6
 Stable tag: 1.3.1
 License: GNU GPL Version 2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
