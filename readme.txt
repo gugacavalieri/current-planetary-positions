@@ -36,7 +36,7 @@ These languages are included in the plugin:
 
 This plugin is translation-ready, and includes a `.pot` file to make it easy for you to translate it into other languages.
 
-For more info, see the [FAQ](http://wordpress.org/plugins/daily-moon-forecast/faq/), the Installation instructions (link above), or the [plugin web page](http://isabelcastillo.com/docs/category/daily-moon-forecast-wordpress-plugin).
+For more info, see the FAQ, the Installation instructions (links above), or the [plugin web page](http://isabelcastillo.com/docs/category/current-planetary-positions-wordpress-plugin).
 
 == Installation ==
 
@@ -92,6 +92,7 @@ To center the widget title and the date and time, add this to `style.css`:
 
 = 2.0 =
 * Fix - Added a solution for sites using Windows hosting. Previously, the ephemeris would not work on sites using Windows hosting.
+* Fix - File permissions were not being checked properly which was causing ephemeris not to work on some sites.
 
 = 1.3.1 =
 * Maintenance:  Updated the sweph binary files. The old ones may have been unreadable on some servers, and caused all planets set to 0 degrees Aries.
