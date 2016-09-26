@@ -3,7 +3,7 @@
 Plugin Name: Current Planetary Positions
 Plugin URI: http://isabelcastillo.com/docs/category/current-planetary-positions-wordpress-plugin
 Description: Display the current planetary positions in the zodiac signs.
-Version: 2.0.beta1@todo
+Version: 2.0.beta2@tod0
 Author: Isabel Castillo
 Author URI: http://isabelcastillo.com
 License: GPL2
@@ -66,11 +66,7 @@ class Current_Planetary_Positions {
 	public function plugins_loaded() {
 		load_plugin_textdomain( 'current-planetary-positions', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 
-
-		$wantedPerms = 0755;
-		$actualPerms = substr(sprintf('%o', fileperms(CPP_PLUGIN_DIR . 'sweph/swetest')), -4);
-		if($actualPerms !== $wantedPerms)
-			chmod(CPP_PLUGIN_DIR . 'sweph/swetest', $wantedPerms);
+		$this->is_sweph_executable();
 
 		// Is this site hosted on Windows?
 		if ( strtolower( PHP_SHLIB_SUFFIX ) === 'dll' ) {
@@ -86,6 +82,60 @@ class Current_Planetary_Positions {
 	 */
 	public function register_widgets() {
 		register_widget( 'cpp_widget' );
+	}
+
+	/**
+	 * Checks if the Ephemeris has the required file permissions.
+	 *
+	 * Attemps to set the proper permission.
+	 * @since 2.0
+	 * @return bool true if permission is (or gets set to) 0755, otherwise false
+	 */
+	public function is_sweph_executable() {
+
+		$out			= true;
+		$file			= CPP_PLUGIN_DIR . 'sweph/swetest';
+		$permissions	= substr( sprintf( '%o', fileperms( $file ) ), -4 );
+
+		if ( '0755' !== $permissions ) {
+
+			// If chmod() is enabled
+			if ( function_exists( 'chmod' ) &&
+			// AND NOT in the array of disabled functions
+			! in_array( 'chmod', array_map( 'trim', explode( ', ', ini_get( 'disable_functions' ) ) ) ) &&
+			// AND NOT in safe mode
+			ini_get( 'safe_mode' ) != 1
+			) {
+
+				// Attempt to change permission.
+				$change = chmod( $file, 0755 );
+				
+				if ( ! $change ) {
+					$out = false;
+					add_action( 'admin_notices', array( $this, 'admin_notice_chmod_failed' ) );
+				}
+			} else {
+				$out = false;
+				add_action( 'admin_notices', array( $this, 'admin_notice_chmod_failed' ) );
+			}
+		}
+
+		return $out;
+	}
+
+	/**
+	 * Add admin notice when file permissions on ephemeris will not permit the plugin to work.
+	 * @since 2.0
+	 */
+	public function admin_notice_chmod_failed() {
+
+		global $pagenow;
+
+		if ( in_array( $pagenow, array( 'plugins.php', 'widgets.php' ) ) ) {		
+			$msg = sprintf( __( 'Your server did not allow Current Planetary Positions to set the necessary file permissions for the Ephemeris. Current Planetary Positions requires this in order to show the correct position of the planets. <a href="%s" target="_blank" rel="nofollow">See this</a> to fix it.', 'current-planetary-positions' ), 'http://isabelcastillo.com/docs/setting-permissions-swetest-file' );// @test link
+
+			printf( '<div class="notice notice-error is-dismissible"><p>%s</p></div>', $msg );
+		}
 	}
 
 	/**
