@@ -64,6 +64,14 @@ class cpp_widget extends WP_Widget {
 
 	public function widget( $args, $instance ) {
 
+		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Current Planetary Positions', 'current-planetary-positions' ) : $instance['title'], $instance, $this->id_base );
+		$show_utc_time = empty($instance['show_utc_time']) ? false : 'on';
+		
+		echo $args['before_widget'];
+		if ( $title ) {
+			echo '<h3 class="widget-title">'. $title . '</h3>';
+		}		
+
 		// get UT/GMT time for exec */
 		
 		$time = new DateTime('now', new DateTimeZone('UTC'));
@@ -73,35 +81,33 @@ class cpp_widget extends WP_Widget {
 		
 		$num_planets = 11;
 		
-		$sweph = CPP_PLUGIN_DIR . 'sweph'; // set path to ephemeris
-		unset($out,$longitude,$speed);
+		// set path to ephemeris
+		$sweph = apply_filters( 'zp_sweph_dir', CPP_PLUGIN_DIR . 'sweph' );
 		$PATH = '';
 		putenv("PATH=$PATH:$sweph");
+		$swetest = apply_filters( 'zp_sweph_file', 'swetest' );
+
+		unset($out,$longitude,$speed);
 
 		// get 11 planets
 		
-		exec ("swetest -edir$sweph -b$utdate -ut$uttime -p0123456789D -eswe -fPls -g, -head", $out);
-		// output $row[] = (planet name, longitude decimal, speed)
-		// 1 row for each of 11 planets, indexed 0 - 10
+		exec ("$swetest -edir$sweph -b$utdate -ut$uttime -p0123456789D -eswe -fPls -g, -head", $out);
+
+		if ( empty( $out ) ) {
+			echo $args['after_widget'];
+			return;
+		}
 		
 		foreach ($out as $key => $line) {
 		
 			$row = explode(',',$line);
-			$pl_name[$key] = $row[0];
-			$longitude[$key] = $row[1];
-			$speed[$key] = $row[2];
+			$pl_name[$key] = $row[0]; // planet name
+			$longitude[$key] = $row[1]; // longitude decimal
+			$speed[$key] = $row[2]; // speed
 		}
 		// localize planet names
 		$pl_name = array( __( 'Sun', 'current-planetary-positions' ), __( 'Moon', 'current-planetary-positions' ), __( 'Mercury', 'current-planetary-positions' ), __( 'Venus', 'current-planetary-positions' ), __( 'Mars', 'current-planetary-positions' ), __( 'Jupiter', 'current-planetary-positions' ), __( 'Saturn', 'current-planetary-positions' ), __( 'Uranus', 'current-planetary-positions' ), __( 'Neptune', 'current-planetary-positions' ), __( 'Pluto', 'current-planetary-positions' ), __( 'Chiron', 'current-planetary-positions') );
 
-		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Current Planetary Positions', 'current-planetary-positions' ) : $instance['title'], $instance, $this->id_base );
-		$show_utc_time = empty($instance['show_utc_time']) ? false : 'on';
-		
-		echo $args['before_widget'];
-		if ( $title ) {
-			echo '<h3 class="widget-title">'. $title . '</h3>';
-		}
-		// begin output to browser
 		?>
 		<div id="current-planets">
 		<?php 

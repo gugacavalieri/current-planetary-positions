@@ -3,7 +3,7 @@
 Plugin Name: Current Planetary Positions
 Plugin URI: http://isabelcastillo.com/docs/category/current-planetary-positions-wordpress-plugin
 Description: Display the current planetary positions in the zodiac signs.
-Version: 1.3.1
+Version: 2.0.beta1@todo
 Author: Isabel Castillo
 Author URI: http://isabelcastillo.com
 License: GPL2
@@ -27,7 +27,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Current Planetary Positions Plugin; if not, If not, see <http://www.gnu.org/licenses/old-licenses/gpl-2.0.html>.
 */
-class Current_Planetary_Positions{
+class Current_Planetary_Positions {
 
 	private static $instance = null;
 	public static function get_instance() {
@@ -53,7 +53,7 @@ class Current_Planetary_Positions{
 	 * Registers the widget.
 	 * @since 1.0
 	 */
-   	function enqueue() {
+   	public function enqueue() {
 		
 		wp_register_style('cpp', plugins_url('/style.css', __FILE__));
 		wp_enqueue_style('cpp');
@@ -63,19 +63,49 @@ class Current_Planetary_Positions{
 	 * Registers the widget.
 	 * @since 1.0
 	 */
-	function plugins_loaded() {
+	public function plugins_loaded() {
 		load_plugin_textdomain( 'current-planetary-positions', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+
+
 		$wantedPerms = 0755;
 		$actualPerms = substr(sprintf('%o', fileperms(CPP_PLUGIN_DIR . 'sweph/swetest')), -4);
 		if($actualPerms !== $wantedPerms)
 			chmod(CPP_PLUGIN_DIR . 'sweph/swetest', $wantedPerms);
+
+		// Is this site hosted on Windows?
+		if ( strtolower( PHP_SHLIB_SUFFIX ) === 'dll' ) {
+			if ( ! defined( 'ZP_WINDOWS_SERVER' ) ) {
+				add_action( 'admin_notices', array( $this, 'admin_notice_windows_server' ) );
+			}
+		}
+
 	}
 	/** 
 	 * Registers the widget.
 	 * @since 1.0
 	 */
-	function register_widgets() {
+	public function register_widgets() {
 		register_widget( 'cpp_widget' );
 	}
+
+	/**
+	 * Add admin notice when site is hosted on Windows server.
+	 * @since 2.0
+	 */
+	public function admin_notice_windows_server() {
+
+		global $pagenow;
+
+		if ( in_array( $pagenow, array( 'plugins.php', 'widgets.php' ) ) ) {
+
+			$msg = sprintf( __( 'ERROR: Your website server is using a Windows operating system (Windows hosting). For Current Planetary Positions to work on your server, you need the "ZP Windows Server" plugin. See <a href="%s" target="_blank" rel="nofollow">this</a> for details.', 'current-planetary-positions' ), 'https://cosmicplugins.com/downloads/zodiacpress-windows-server/' );
+
+			printf( '<div class="notice notice-error is-dismissible"><p>%s</p></div>', $msg );
+		}
+	}
+
+
+
+
 }
 $current_planetary_postitions = Current_Planetary_Positions::get_instance();

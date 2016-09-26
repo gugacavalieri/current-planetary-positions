@@ -3,8 +3,8 @@ Contributors: isabel104
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=me%40isabelcastillo%2ecom
 Tags: current planets, planetary, positions, astrology, zodiac, planets positions, ephemeris
 Requires at least: 3.7
-Tested up to: 4.6
-Stable tag: 1.3.1
+Tested up to: 4.6.1
+Stable tag: 1.3.1@todo
 License: GNU GPL Version 2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -90,6 +90,9 @@ To center the widget title and the date and time, add this to `style.css`:
 
 == Changelog ==
 
+= 2.0 =
+* Fix - Added a solution for sites using Windows hosting. Previously, the ephemeris would not work on sites using Windows hosting.
+
 = 1.3.1 =
 * Maintenance:  Updated the sweph binary files. The old ones may have been unreadable on some servers, and caused all planets set to 0 degrees Aries.
 
@@ -140,3 +143,8 @@ To center the widget title and the date and time, add this to `style.css`:
 
 = 1.0 =
 * Initial release of the WP plugin version.
+
+== Upgrade Notice ==
+
+= 2.0 =
+Important fix for ALL sites, especially for sites using Windows hosting.
