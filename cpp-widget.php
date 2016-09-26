@@ -16,10 +16,24 @@ class cpp_widget extends WP_Widget {
 	}
 
 	public function isa_get_sign_position($longitude) {
-		$sym = array('aries','taurus','gemini','cancer','leo','virgo','libra','scorpio','sagittarius','capricorn','aquarius','pisces');
-		$localize_signs = array( __( 'Aries', 'current-planetary-positions' ), __( 'Taurus', 'current-planetary-positions' ), __( 'Gemini', 'current-planetary-positions' ), __( 'Cancer', 'current-planetary-positions' ), __( 'Leo', 'current-planetary-positions' ), __( 'Virgo', 'current-planetary-positions' ), __( 'Libra', 'current-planetary-positions' ), __( 'Scorpio', 'current-planetary-positions' ), __( 'Sagittarius', 'current-planetary-positions' ), __( 'Capricorn', 'current-planetary-positions' ), __( 'Aquarius', 'current-planetary-positions'), __( 'Pisces', 'current-planetary-positions') );
 
-		foreach ($sym as $key => $val) {
+		$sym = array('aries','taurus','gemini','cancer','leo','virgo','libra','scorpio','sagittarius','capricorn','aquarius','pisces');
+		
+		$localize_signs = array(
+			__( 'Aries', 'current-planetary-positions' ),
+			__( 'Taurus', 'current-planetary-positions' ),
+			__( 'Gemini', 'current-planetary-positions' ),
+			__( 'Cancer', 'current-planetary-positions' ),
+			__( 'Leo', 'current-planetary-positions' ),
+			__( 'Virgo', 'current-planetary-positions' ),
+			__( 'Libra', 'current-planetary-positions' ),
+			__( 'Scorpio', 'current-planetary-positions' ),
+			__( 'Sagittarius', 'current-planetary-positions' ),
+			__( 'Capricorn', 'current-planetary-positions' ),
+			__( 'Aquarius', 'current-planetary-positions'),
+			__( 'Pisces', 'current-planetary-positions') );
+
+		foreach ( $sym as $key => $val ) {
 			$symbol[$key] = '<span id="currentplanets_sprite" class="' . $val . '"></span> '. $localize_signs[$key];
 		}
 	
@@ -31,9 +45,70 @@ class cpp_widget extends WP_Widget {
 		$full_sec = round(($full_min - $min) * 60);
 		
 		$dms_numbers_range = range(0, 59);
-					
-		$localize_dms_numbers = array(_('00'),_('01'),_('02'),_('03'),_('04'),_('05'),_('06'),_('07'),_('08'),_('09'),_('10'),_('11'),_('12'),_('13'),_('14'),_('15'),_('16'),_('17'),_('18'),_('19'),_('20'),_('21'),_('22'),_('23'),_('24'),_('25'),_('26'),_('27'),_('28'),_('29'),_('30'),_('31'),_('32'),_('33'),_('34'),_('35'),_('36'),_('37'),_('38'),_('39'),_('40'),_('41'),_('42'),_('43'),_('44'),_('45'),_('46'),_('47'),_('48'),_('49'),_('50'),_('51'),_('52'),_('53'),_('54'),_('55'),_('56'),_('57'),_('58'),_('59'));
-					
+
+		$localize_dms_numbers = array( 
+			_('00', 'current-planetary-positions' ),
+			_('01', 'current-planetary-positions' ),
+			_('02', 'current-planetary-positions' ),
+			_('03', 'current-planetary-positions' ),
+			_('04', 'current-planetary-positions' ),
+			_('05', 'current-planetary-positions' ),
+			_('06', 'current-planetary-positions' ),
+			_('07', 'current-planetary-positions' ),
+			_('08', 'current-planetary-positions' ),
+			_('09', 'current-planetary-positions' ),
+			_('10', 'current-planetary-positions' ),
+			_('11', 'current-planetary-positions' ),
+			_('12', 'current-planetary-positions' ),
+			_('13', 'current-planetary-positions' ),
+			_('14', 'current-planetary-positions' ),
+			_('15', 'current-planetary-positions' ),
+			_('16', 'current-planetary-positions' ),
+			_('17', 'current-planetary-positions' ),
+			_('18', 'current-planetary-positions' ),
+			_('19', 'current-planetary-positions' ),
+			_('20', 'current-planetary-positions' ),
+			_('21', 'current-planetary-positions' ),
+			_('22', 'current-planetary-positions' ),
+			_('23', 'current-planetary-positions' ),
+			_('24', 'current-planetary-positions' ),
+			_('25', 'current-planetary-positions' ),
+			_('26', 'current-planetary-positions' ),
+			_('27', 'current-planetary-positions' ),
+			_('28', 'current-planetary-positions' ),
+			_('29', 'current-planetary-positions' ),
+			_('30', 'current-planetary-positions' ),
+			_('31', 'current-planetary-positions' ),
+			_('32', 'current-planetary-positions' ),
+			_('33', 'current-planetary-positions' ),
+			_('34', 'current-planetary-positions' ),
+			_('35', 'current-planetary-positions' ),
+			_('36', 'current-planetary-positions' ),
+			_('37', 'current-planetary-positions' ),
+			_('38', 'current-planetary-positions' ),
+			_('39', 'current-planetary-positions' ),
+			_('40', 'current-planetary-positions' ),
+			_('41', 'current-planetary-positions' ),
+			_('42', 'current-planetary-positions' ),
+			_('43', 'current-planetary-positions' ),
+			_('44', 'current-planetary-positions' ),
+			_('45', 'current-planetary-positions' ),
+			_('46', 'current-planetary-positions' ),
+			_('47', 'current-planetary-positions' ),
+			_('48', 'current-planetary-positions' ),
+			_('49', 'current-planetary-positions' ),
+			_('50', 'current-planetary-positions' ),
+			_('51', 'current-planetary-positions' ),
+			_('52', 'current-planetary-positions' ),
+			_('53', 'current-planetary-positions' ),
+			_('54', 'current-planetary-positions' ),
+			_('55', 'current-planetary-positions' ),
+			_('56', 'current-planetary-positions' ),
+			_('57', 'current-planetary-positions' ),
+			_('58', 'current-planetary-positions' ),
+			_('59', 'current-planetary-positions' )
+			);
+
 		$localized_dms = array_combine($dms_numbers_range,$localize_dms_numbers);
 		
 		$localized_deg = $localized_dms[$deg];
@@ -106,7 +181,18 @@ class cpp_widget extends WP_Widget {
 			$speed[$key] = $row[2]; // speed
 		}
 		// localize planet names
-		$pl_name = array( __( 'Sun', 'current-planetary-positions' ), __( 'Moon', 'current-planetary-positions' ), __( 'Mercury', 'current-planetary-positions' ), __( 'Venus', 'current-planetary-positions' ), __( 'Mars', 'current-planetary-positions' ), __( 'Jupiter', 'current-planetary-positions' ), __( 'Saturn', 'current-planetary-positions' ), __( 'Uranus', 'current-planetary-positions' ), __( 'Neptune', 'current-planetary-positions' ), __( 'Pluto', 'current-planetary-positions' ), __( 'Chiron', 'current-planetary-positions') );
+		$pl_name = array(
+			__( 'Sun', 'current-planetary-positions' ),
+			__( 'Moon', 'current-planetary-positions' ),
+			__( 'Mercury', 'current-planetary-positions' ),
+			__( 'Venus', 'current-planetary-positions' ),
+			__( 'Mars', 'current-planetary-positions' ),
+			__( 'Jupiter', 'current-planetary-positions' ),
+			__( 'Saturn', 'current-planetary-positions' ),
+			__( 'Uranus', 'current-planetary-positions' ),
+			__( 'Neptune', 'current-planetary-positions' ),
+			__( 'Pluto', 'current-planetary-positions' ),
+			__( 'Chiron', 'current-planetary-positions') );
 
 		?>
 		<div id="current-planets">
@@ -118,7 +204,7 @@ class cpp_widget extends WP_Widget {
 			$utc_display_date = $time->format('j').'-'.$time->format('M').'-'.$time->format('Y');// like 3-Apr-2014
 			$utc_display_time = $time->format('H').':'.$time->format('i');  // HH:MM
 					
-			echo '<p id="utc-time">' . $utc_display_date . ', ' . $utc_display_time . ' UT/GMT';
+			echo '<p id="utc-time">' . esc_html( $utc_display_date ) . ', ' . esc_html( $utc_display_time ) . ' UT/GMT';
 
 		} else {
 
@@ -129,12 +215,15 @@ class cpp_widget extends WP_Widget {
 		echo '</p><table>';
 
 		for ($i = 0; $i <= $num_planets - 1; $i++) {
+
+			$position = $this->isa_get_sign_position( $longitude[ $i ] );
+
 			echo '<tr><td>';
 				printf( __( '%s', 'current-planetary-positions' ), $pl_name[$i] );
 				echo '&nbsp;';
 			echo '</td><td>';
-				echo $this->isa_get_sign_position($longitude[$i]);
-				if ($speed[$i] < 0) { //retrograde
+				echo esc_html( $position );
+				if ( $speed[ $i ] < 0 ) { //retrograde
 						echo '&nbsp;' . __('R', 'current-planetary-positions' );
 				}
 			echo  '</td></tr>';
