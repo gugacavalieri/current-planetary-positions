@@ -3,7 +3,7 @@ Contributors: isabel104
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=me%40isabelcastillo%2ecom
 Tags: current planets, planetary, positions, astrology, zodiac, planets positions, ephemeris
 Requires at least: 3.7
-Tested up to: 4.6.1
+Tested up to: 4.7
 Stable tag: 2.1
 License: GNU GPL Version 2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -106,6 +106,10 @@ To center the widget title and the date and time, add this to `cpp.css`:
 
 == Changelog ==
 
+= 2.1 =
+* New - Renamed the plugin stylesheet style.css to cpp.css.
+* Tweak - Updated swetest to accomodate web servers that cannot read files compiled with GLibc 2.7+.
+
 = 2.0 =
 * New - Added North Node (true Node) to the widget.
 * Fix - Added a solution for sites using Windows hosting. Previously, the ephemeris would not work on sites using Windows hosting.
@@ -164,6 +168,9 @@ To center the widget title and the date and time, add this to `cpp.css`:
 * Initial release of the WP plugin version.
 
 == Upgrade Notice ==
+
+= 2.1 =
+Updated to accomodate web servers that cannot read files compiled with GLibc 2.7+
 
 = 2.0 =
 Important fix for ALL sites, especially for sites using Windows hosting.
