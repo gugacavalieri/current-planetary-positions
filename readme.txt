@@ -108,7 +108,7 @@ To center the widget title and the date and time, add this to `cpp.css`:
 
 = 2.1 =
 * New - Renamed the plugin stylesheet style.css to cpp.css.
-* Tweak - Updated swetest to accomodate web servers that cannot read files compiled with GLibc 2.7+.
+* Tweak - Updated swetest to accommodate web servers that cannot read files compiled with GLibc 2.7+.
 
 = 2.0 =
 * New - Added North Node (true Node) to the widget.
@@ -170,7 +170,7 @@ To center the widget title and the date and time, add this to `cpp.css`:
 == Upgrade Notice ==
 
 = 2.1 =
-Updated to accomodate web servers that cannot read files compiled with GLibc 2.7+
+Updated to accommodate web servers that cannot read files compiled with GLibc 2.7+
 
 = 2.0 =
 Important fix for ALL sites, especially for sites using Windows hosting.
