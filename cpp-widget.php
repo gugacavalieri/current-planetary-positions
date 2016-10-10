@@ -139,6 +139,8 @@ class cpp_widget extends WP_Widget {
 
 	public function widget( $args, $instance ) {
 
+		wp_enqueue_style('cpp');
+
 		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? __( 'Current Planetary Positions', 'current-planetary-positions' ) : $instance['title'], $instance, $this->id_base );
 		$show_utc_time = empty($instance['show_utc_time']) ? false : 'on';
 		
