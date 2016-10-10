@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=me%40
 Tags: current planets, planetary, positions, astrology, zodiac, planets positions, ephemeris
 Requires at least: 3.7
 Tested up to: 4.6.1
-Stable tag: 2.0
+Stable tag: 2.1
 License: GNU GPL Version 2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -94,7 +94,7 @@ There are 3 possible reasons for all positions to be stuck on Aries.
 
 **CSS Style Suggestions**
 
-To center the widget title and the date and time, add this to `style.css`:
+To center the widget title and the date and time, add this to `cpp.css`:
 
 `.widget_cpp_widget h3, #current-planets #localtime  {
 	text-align:center;

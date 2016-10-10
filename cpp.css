@@ -22,7 +22,7 @@
 #currentplanets_sprite.virgo{ background-position: -286px 0; } 
 
 #current-planets tbody tr {background-color:transparent;}
-
+#current-planets td { padding:0 5px; }
 /* Twenty fourteen theme compatibility */
 
 #current-planets table, #current-planets th, #current-planets td {border:0;}

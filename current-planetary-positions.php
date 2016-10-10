@@ -54,7 +54,7 @@ class Current_Planetary_Positions {
 	 * @since 1.0
 	 */
    	public function enqueue() {
-		wp_register_style('cpp', plugins_url('/style.css', __FILE__));
+		wp_register_style('cpp', plugins_url('/cpp.css', __FILE__));
 	}
 
 	/** 
