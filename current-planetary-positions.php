@@ -5,12 +5,12 @@ Plugin URI: https://isabelcastillo.com/docs/about-current-planetary-positions
 Description: Display the current planetary positions in the zodiac signs.
 Version: 2.1.1
 Author: Isabel Castillo
-Author URI: http://isabelcastillo.com
+Author URI: https://isabelcastillo.com
 License: GPL2
 Text Domain: current-planetary-positions
 Domain Path: languages
 
-Copyright 2013 - 2016 Isabel Castillo
+Copyright 2013 - 2017 Isabel Castillo
 
 This file is part of Current Planetary Positions Plugin.
 
