@@ -3,7 +3,7 @@
 Plugin Name: Current Planetary Positions
 Plugin URI: https://isabelcastillo.com/docs/about-current-planetary-positions
 Description: Display the current planetary positions in the zodiac signs.
-Version: 2.1
+Version: 2.1.1
 Author: Isabel Castillo
 Author URI: http://isabelcastillo.com
 License: GPL2
@@ -42,6 +42,7 @@ class Current_Planetary_Positions {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue' ) );
 		add_action( 'plugins_loaded', array( $this, 'plugins_loaded' ) );
 		add_action( 'widgets_init', array( $this, 'register_widgets' ) );
+		add_action( 'init', array( $this, 'load_textdomain' ) );
 
 		if( ! defined( 'CPP_PLUGIN_DIR' ) )
 			define( 'CPP_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
@@ -49,8 +50,17 @@ class Current_Planetary_Positions {
 		require_once CPP_PLUGIN_DIR . 'cpp-widget.php';
 
     }
+
 	/** 
-	 * Registers the widget.
+	 * Load the plugin textdomain
+	 * @since 2.1.1
+	 */
+	public function load_textdomain() {
+		load_plugin_textdomain( 'current-planetary-positions', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+	}
+
+	/** 
+	 * Register the stylesheet
 	 * @since 1.0
 	 */
    	public function enqueue() {
@@ -58,12 +68,10 @@ class Current_Planetary_Positions {
 	}
 
 	/** 
-	 * Registers the widget.
+	 * Check that the plugin can work.
 	 * @since 1.0
 	 */
 	public function plugins_loaded() {
-		load_plugin_textdomain( 'current-planetary-positions', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-
 		$this->is_sweph_executable();
 
 		// Is this site hosted on Windows?
