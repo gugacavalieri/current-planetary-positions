@@ -30,7 +30,7 @@ These languages are included in the plugin:
 
 This plugin is translation-ready, and includes a `.pot` file to make it easy for you to translate it into other languages.
 
-For more info, see the FAQ, the Installation instructions (links above), or the [plugin web page](http://isabelcastillo.com/docs/category/current-planetary-positions-wordpress-plugin) which includes documentation and troubleshooting help.
+For more info, see the FAQ, the Installation instructions (links above), or the [plugin web page](https://isabelcastillo.com/docs/about-current-planetary-positions) which includes documentation and troubleshooting help.
 
 For Support or suggestions, please use the official Support Forum (link above).
 
@@ -64,7 +64,7 @@ There are 3 possible reasons for all positions to be stuck on Aries.
 
 **2.**  This plugin uses the PHP exec() function. Some hosting providers disable the exec() function. If this function is disabled, the plugin will not work. If your host has disabled this function, contact them as they may have a way for you to enable it. (Check their support pages.)
 
-**3.**  It may be that your server did not allow the plugin to set the proper file permissions for the Swiss Ephemeris. [See this](http://isabelcastillo.com/docs/setting-permissions-swetest-file) for help.
+**3.**  It may be that your server did not allow the plugin to set the proper file permissions for the Swiss Ephemeris. [See this](https://isabelcastillo.com/docs/about-current-planetary-positions#docs-swetest) for help.
 
 = How can I enable exec() on Namecheap host? = 
 

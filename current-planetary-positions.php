@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Current Planetary Positions
-Plugin URI: http://isabelcastillo.com/docs/category/current-planetary-positions-wordpress-plugin
+Plugin URI: https://isabelcastillo.com/docs/about-current-planetary-positions
 Description: Display the current planetary positions in the zodiac signs.
 Version: 2.1
 Author: Isabel Castillo
@@ -130,7 +130,7 @@ class Current_Planetary_Positions {
 		global $pagenow;
 
 		if ( in_array( $pagenow, array( 'plugins.php', 'widgets.php' ) ) ) {		
-			$msg = sprintf( __( 'Your server did not allow Current Planetary Positions to set the necessary file permissions for the Ephemeris. Current Planetary Positions requires this in order to show the correct position of the planets. <a href="%s" target="_blank" rel="nofollow">See this</a> to fix it.', 'current-planetary-positions' ), 'http://isabelcastillo.com/docs/setting-permissions-swetest-file' );
+			$msg = sprintf( __( 'Your server did not allow Current Planetary Positions to set the necessary file permissions for the Ephemeris. Current Planetary Positions requires this in order to show the correct position of the planets. <a href="%s" target="_blank" rel="nofollow">See this</a> to fix it.', 'current-planetary-positions' ), 'https://isabelcastillo.com/docs/about-current-planetary-positions#docs-swetest' );
 
 			printf( '<div class="notice notice-error is-dismissible"><p>%s</p></div>', $msg );
 		}

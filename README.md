@@ -20,4 +20,4 @@ This plugin is translation-ready, and includes a `.pot` file to make it easy for
 
 Current Planetary Positions uses the Swiss Ephemeris to get the longitude of the planets.
 
-For more info, see the [plugin web page](http://isabelcastillo.com/docs/category/current-planetary-positions-wordpress-plugin).
+For more info, see the [plugin web page](https://isabelcastillo.com/docs/about-current-planetary-positions).
