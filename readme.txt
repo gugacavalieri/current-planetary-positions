@@ -3,8 +3,8 @@ Contributors: isabel104
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=me%40isabelcastillo%2ecom
 Tags: current planets, planetary, positions, astrology, zodiac, planets positions, ephemeris
 Requires at least: 3.7
-Tested up to: 4.7
-Stable tag: 2.1
+Tested up to: 4.7.2
+Stable tag: 2.1.1
 License: GNU GPL Version 2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -105,6 +105,10 @@ To center the widget title and the date and time, add this to `cpp.css`:
 2. Zoomed in - Current Planetary Positions widget
 
 == Changelog ==
+
+= 2.1.1 =
+* Tweak - The plugin textdomain should be loaded on the init action rather than the plugins_loaded action.
+* Tweak - Updated links to plugin URI and plugin documentation.
 
 = 2.1 =
 * New - Renamed the plugin stylesheet style.css to cpp.css.
